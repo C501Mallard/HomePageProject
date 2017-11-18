@@ -1,1 +1,45 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="SearchFA.aspx.cs" Inherits="SearchFA" %>  <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">  </asp:Content> <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">      <h1 class="page-header">類別搜尋</h1>     <form id="form1" runat="server">         <div>             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="SELECT distinct 類別 FROM FA61">             </asp:SqlDataSource>             <asp:DropDownList ID="DropDownList1" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSource2" DataTextField="類別">                <%-- <asp:ListItem Text="查資料"></asp:ListItem>--%>               <%--  <asp:ListItem Text="(三) 抗氧化劑"></asp:ListItem>                 <asp:ListItem Text="(七) 品質改良用、釀造用及食品製造用劑"></asp:ListItem>                 --%>             </asp:DropDownList>               <asp:Button ID="Button1" runat="server" Text="查詢" OnClick="Button1_Click" />             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="table_query2" SelectCommandType="StoredProcedure">                 <SelectParameters>                     <asp:ControlParameter ControlID="DropDownList1" Name="table_class" Type="String" />                 </SelectParameters>             </asp:SqlDataSource>             <%--         預存程式                         create proc table_query 	                        @table_name nvarchar(10)                         as                         begin 	                        exec ('select * from '+@table_name)                         end                 所以  SelectCommand 要對應 預存程式的名稱  table_query，ControlParameter的Name 要對應 預存程式的變數 @table_name             --%>             <hr />             <asp:GridView ID="GridView2" runat="server" DataSourceID="SqlDataSource1"></asp:GridView>         </div>     </form> </asp:Content> 
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="SearchFA.aspx.cs" Inherits="SearchFA" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
+    <div class="col-lg-12">
+        <h1 class="page-header">類別搜尋</h1>
+    </div>
+    <form id="form1" runat="server">
+        <div>
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="SELECT distinct ClassName FROM FA61"></asp:SqlDataSource>
+            <asp:DropDownList ID="DropDownList1" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSource2" DataTextField="ClassName" AutoPostBack="true">
+            </asp:DropDownList>
+            <%--<asp:Button ID="Button1" runat="server" Text="查詢" OnClick="Button1_Click" />--%>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="table_query_FA" SelectCommandType="StoredProcedure">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="DropDownList1" Name="table_class" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+            <hr />
+            <asp:GridView ID="GridView2" runat="server" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+               
+                <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+
+                <FooterStyle BackColor="#CCCC99"></FooterStyle>
+
+                <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                <PagerStyle HorizontalAlign="Right" BackColor="#F7F7DE" ForeColor="Black"></PagerStyle>
+
+                <RowStyle BackColor="#F7F7DE"></RowStyle>
+
+                <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+                <SortedAscendingCellStyle BackColor="#FBFBF2"></SortedAscendingCellStyle>
+
+                <SortedAscendingHeaderStyle BackColor="#848384"></SortedAscendingHeaderStyle>
+
+                <SortedDescendingCellStyle BackColor="#EAEAD3"></SortedDescendingCellStyle>
+
+                <SortedDescendingHeaderStyle BackColor="#575357"></SortedDescendingHeaderStyle>
+            </asp:GridView>
+        </div>
+    </form>
+</asp:Content>
