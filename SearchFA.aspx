@@ -35,7 +35,7 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#<%#Eval("ChName") %>" href="#<%#Eval("id_num") %>">
-                                        <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> )】
+                                        <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> 】
                                     </a>
                                 </h4>
                             </div>
