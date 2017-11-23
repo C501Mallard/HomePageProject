@@ -30,12 +30,12 @@
             <%--<div id="searchlist">--%>
                 <asp:repeater id="Repeater1" runat="server" datasourceid="SqlDataSource3">
                 <ItemTemplate>
-                    <div class="panel-group" id="<%#Eval("ChName") %>">
+                    <div class="panel-group" id="SearchFAlistID">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#<%#Eval("ChName") %>" href="#<%#Eval("id_num") %>">
-                                        <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> 】
+                                    <a data-toggle="collapse" data-parent="#SearchFAlistID" href="#<%#Eval("id_num") %>">
+                                        <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> )】
                                     </a>
                                 </h4>
                             </div>
@@ -54,7 +54,8 @@
                                             <td id="tb1td">規格：</td>
                                             <td>
                                                 <%--<button id="filelink" href="<%#Eval("ClassingFASpec") %>" class="btn-link">檔案下載</button>--%>
-                                               <a  href="<%#Eval("ClassingFASpec") %>">檔案下載</a> 
+                                                <%# checkEmptyLink( Eval("ClassingFASpec"))%> 
+                                                <%-- <a  href="<%#Eval("ClassingFASpec") %>">檔案下載</a> --%>
                                             </td>
                                         </tr>
                                         <tr>

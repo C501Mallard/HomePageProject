@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -29,13 +29,22 @@ public partial class SearchFA : System.Web.UI.Page
         // Repeater1.DataBind();
 
         //SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString);
-        //SqlDataAdapter da = new SqlDataAdapter("select distinct  é¡åˆ¥  from é£Ÿå“æ·»åŠ ç‰©è³‡æ–™é›†61 order by  é¡åˆ¥ asc", conn);
+        //SqlDataAdapter da = new SqlDataAdapter("select distinct  é¡????  from é£????æ·»å????©è????????61 order by  é¡???? asc", conn);
 
         //DataSet ds = new DataSet();
 
         //da.Fill(ds);
     }
     
+    protected string checkEmptyLink(object ob) {
+        string typ = ob.ToString();
 
+        if (typ=="") {
+            return "¨S¦³¸ê®Æ¥i¨Ñ¤U¸ü";
+        }
+        else {
+            return "<a  href=\""+ typ + "\">ÀÉ®×¤U¸ü</a>";
+        }
     
+    }    
 }
