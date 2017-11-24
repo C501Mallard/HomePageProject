@@ -33,7 +33,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="SearchFA.aspx">
+                    <a href="SearchFA2.aspx">
                         <div class="panel-footer">
                             <span class="pull-left" href="SearchFA.aspx">查詢</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -17,25 +17,25 @@
     </div>
     <form id="form1" runat="server">
         <div>
-            <asp:sqldatasource id="SqlDataSource2" runat="server" connectionstring="<%$ ConnectionStrings:constr %>" selectcommand="SELECT distinct ClassName FROM FA61"></asp:sqldatasource>
-            <asp:dropdownlist id="DropDownList1" runat="server" appenddatabounditems="true" datasourceid="SqlDataSource2" datatextfield="ClassName" autopostback="true">
-            </asp:dropdownlist>
-            <asp:sqldatasource id="SqlDataSource3" runat="server" connectionstring="<%$ ConnectionStrings:constr %>"
+            <asp:SqlDataSource id="SqlDataSource2" runat="server" connectionstring="<%$ ConnectionStrings:constr %>" selectcommand="SELECT distinct ClassName FROM FA61"></asp:SqlDataSource>
+            <asp:DropDownList id="DropDownList1" runat="server" appenddatabounditems="true" datasourceid="SqlDataSource2" datatextfield="ClassName" autopostback="true">
+            </asp:DropDownList>
+            <asp:SqlDataSource id="SqlDataSource3" runat="server" connectionstring="<%$ ConnectionStrings:constr %>"
                 selectcommand="SELECT * FROM FA61 where ClassName=@ClassName">
                  <SelectParameters>
                     <asp:ControlParameter ControlID="DropDownList1" PropertyName="SelectedValue" Name="ClassName" Type="String" />
                 </SelectParameters>
-            </asp:sqldatasource>
+            </asp:SqlDataSource>
             <hr />
             <%--<div id="searchlist">--%>
-                <asp:repeater id="Repeater1" runat="server" datasourceid="SqlDataSource3">
+                <asp:Repeater id="Repeater1" runat="server" datasourceid="SqlDataSource3">
                 <ItemTemplate>
                     <div class="panel-group" id="SearchFAlistID">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#SearchFAlistID" href="#<%#Eval("id_num") %>">
-                                        <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> )】
+                                        <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> 】
                                     </a>
                                 </h4>
                             </div>
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </ItemTemplate>     
-            </asp:repeater>
+            </asp:Repeater>
             </div>
         <%--</div>--%>
     </form>

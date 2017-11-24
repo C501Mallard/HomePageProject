@@ -11,4 +11,9 @@ public partial class Setting : System.Web.UI.Page
     {
 
     }
+
+    protected void ListBox1_CallingDataMethods(object sender, CallingDataMethodsEventArgs e)
+    {
+
+    }
 }
