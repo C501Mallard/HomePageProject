@@ -36,7 +36,7 @@
                 //firebase.auth.PhoneAuthProvider.PROVIDER_ID
             ],
             // Terms of service url.
-            tosUrl: 'https://www.google.com'
+            //tosUrl: 'https://www.google.com'
         };
 
         // Initialize the FirebaseUI Widget using Firebase.
