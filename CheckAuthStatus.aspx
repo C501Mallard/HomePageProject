@@ -29,25 +29,56 @@
                     var uid = user.uid;
                     var phoneNumber = user.phoneNumber;
                     var providerData = user.providerData;
+
+                    var myObj, x, localStorage, text, obj;
+
                     user.getIdToken().then(function (accessToken) {
-                        document.getElementById('sign-in-status').textContent = 'Signed in 已登入';
-                        //document.getElementById('sign-in').textContent = 'Sign out';
-                        document.getElementById('account-details').textContent = JSON.stringify({
-                            displayName: displayName,
-                            email: email,
-                            emailVerified: emailVerified,
-                            phoneNumber: phoneNumber,
-                            photoURL: photoURL,
-                            uid: uid,
-                            accessToken: accessToken,
-                            providerData: providerData
-                        }, null, '  ');
+                        //document.getElementById('sign-in-status').textContent = 'Signed in 已登入';
+                        ////document.getElementById('sign-in').textContent = 'Sign out';
+                        //document.getElementById('account-details').textContent = JSON.stringify({
+                        //    displayName: displayName,
+                        //    email: email,
+                        //    emailVerified: emailVerified,
+                        //    phoneNumber: phoneNumber,
+                        //    photoURL: photoURL,
+                        //    uid: uid,
+                        //    accessToken: accessToken,
+                        //    providerData: providerData
+                        //}, null, '  ');
+                       
+                        //myJSON = JSON.stringify({ uid: uid }, null, '  ');
+
+                        //document.getElementById("demo").innerHTML += myObj.uid;
+
+                        //myJSON = JSON.stringify({
+                        //    displayName: displayName,
+                        //    email: email,
+                        //    emailVerified: emailVerified,
+                        //    phoneNumber: phoneNumber,
+                        //    photoURL: photoURL,
+                        //    uid: uid,
+                        //    accessToken: accessToken,
+                        //    providerData: providerData
+                        //}, null, '  ');
+                        ////document.getElementById("demo").innerHTML += myObj.uid;
+                        //document.getElementById('demo').textContent = myJSON;
+                        //document.getElementById('account-details').textContent = photoURL;
+
+                        $('#demo').empty();//先清空 id=booklist 的物件
+                        $('#demo').append('<tbody>');
+                        var trd = "<br />";
+                        trd += "<img src='" + photoURL + "' width='30%' /><br />";
+                        trd += "<h4>" + uid + "</h4><br />";
+                        trd += "<h4>" + email + "</h4><br />";
+                        trd += "<h4>" + displayName + "</h4><br />";
+                        $('#demo').append(trd);
+                        $('#demo').append('</tbody>');
                     });
                 } else {
                     // User is signed out.
-                    document.getElementById('sign-in-status').textContent = 'Signed out 已登出';
+                   document.getElementById('sign-in-status').textContent = 'Signed out 已登出';
                     //document.getElementById('sign-in').textContent = 'Sign in';
-                    document.getElementById('account-details').textContent = 'null';
+                   document.getElementById('account-details').textContent = 'null';
                 }
             }, function (error) {
                 console.log(error);
@@ -66,5 +97,10 @@
     <br>
     <!--<div id="sign-in"></div>-->
     <div id="account-details"></div>
+    <p id="demo">
+        
+    </p>
+    <table id="booklist"></table>
+    
 </asp:Content>
 

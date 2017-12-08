@@ -44,8 +44,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-     
-
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:600,400&subset=latin,cyrillic" />
 
     <style>
     
@@ -174,15 +173,15 @@
                             <!-- /input-group -->
                         </li>
                         <li><a href="HomePage.aspx"><i class="glyphicon glyphicon-home fa-fw"></i>首頁 </a></li>
-                        <li><a href="SearchFA2.aspx"><i class="glyphicon glyphicon-book fa-fw"></i>查詢<span <%--class="fa arrow"--%>></span></a>
-                           <%-- <ul class="nav nav-second-level">
+                        <li><a href="#"><i class="glyphicon glyphicon-book fa-fw"></i>查詢<span class="fa arrow"</span></a>
+                           <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">類別查詢</a>
+                                    <a href="SearchFA2.aspx">類別查詢</a>
                                 </li>
                                 <li>
                                     <a href="#">進階搜尋</a>
                                 </li>
-                            </ul>--%>
+                            </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li><a href="#"><i class="glyphicon glyphicon-knight fa-fw"></i>遊戲<span class="fa arrow"></span></a>
@@ -250,5 +249,6 @@
     <script src="../vendor/metisMenu/metisMenu.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../dist/js/FavortieStyle.js"></script>
 </body>
 </html>

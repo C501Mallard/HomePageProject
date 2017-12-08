@@ -1,13 +1,96 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="SearchFA2.aspx.cs" Inherits="SearchFA" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="SearchFA2.aspx.cs" Inherits="SearchFA2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
-        #tb1td {
-            width: 100px;
-        }
-
+       
         #searchlist {
             height: 85%;
+        }
+
+        /*範例連結:https://codepen.io/manikantag/pen/qdeELg*/
+        .startclick {
+            font-size: 20px;
+            color: rgba(0,0,0,0.3);
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+        }
+
+            .startclick #startspan {
+                margin-left: 4px;
+                margin-top: 3px;
+                z-index: 999;
+                position: absolute;
+            }
+
+                .startclick #startspan:hover {
+                    opacity: 0.8;
+                }
+
+                .startclick #startspan:active {
+                    transform: scale(0.93,0.93) translateY(2px);
+                }
+
+        .ring, .ring2 {
+            opacity: 0;
+            background: grey;
+            width: 1px;
+            height: 1px;
+            position: absolute;
+            /*top: 19px;
+            left: 18px;*/
+            /*border-radius: 50%;*/
+            cursor: pointer;
+        }
+
+        .active #startspan, .active-2 #startspan {
+            color: #F5CC27 ;
+        }
+
+        .active-2 .ring {
+            /*width: 28px;
+            height: 18px;
+            top: -2px !important;
+            left: -2px !important;*/
+            position: absolute;
+            /*border-radius: 50%;*/
+            opacity: 1;
+        }
+
+        /*.active-2 .ring {
+            background: #F5CC27;
+        }
+
+        .active-2 .ring2 {
+            background: #fff;
+        }*/
+
+        .active-3 .ring2 {
+            /*width: 30px;
+            height: 30px;*/
+            /*top: -3px;
+            left: -3px;*/
+            position: absolute;
+            /*border-radius: 50%;*/
+            opacity: 1;
+        }
+
+        .info {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            white-space: nowrap;
+            color: grey;
+            position: relative;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .info-tog {
+            color: #F5CC27;
+            position: relative;
+            opacity: 1;
         }
     </style>
 </asp:Content>
@@ -27,37 +110,55 @@
                 </SelectParameters>
             </asp:SqlDataSource>
             <hr />
-            <%--<div id="searchlist">--%>
-            <%--<asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource3">
+            <asp:Repeater ID="rptResult" runat="server">
+
                 <ItemTemplate>
                     <div class="panel-group" id="SearchFAlistID">
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#SearchFAlistID" href="#<%#Eval("id_num") %>">
-                                        <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> )】
-                                    </a>
-                                </h4>
+                                <table class="table2">
+                                    <tr>
+                                        <td>
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#SearchFAlistID" href="#<%#Eval("id_num") %>">
+                                                    <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> 】
+                                                </a>
+                                            </h4>
+                                        </td>
+                                        <td>
+                                            <div class="startclick">
+                                                <span id="startspan" class="fa fa-star-o"></span>
+                                                <div class="ring"></div>
+                                                <div class="ring2"></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="startclick">
+                                                <p class="info">Added to favourites!</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                             <div id="<%#Eval("id_num") %>" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <table class="table1">
                                         <tr>
-                                            <td id="tb1td">範圍和劑量：</td>
+                                            <td>範圍和劑量：</td>
                                             <td><%#Eval("UsageRangeDosageLimit") %></td>
                                         </tr>
                                         <tr>
-                                            <td id="tb1td">使用限制：</td>
+                                            <td>使用限制：</td>
                                             <td><%#Eval("UsageLimit") %></td>
                                         </tr>
                                         <tr>
-                                            <td id="tb1td">規格：</td>
+                                            <td>規格：</td>
                                             <td>
                                                 <%# checkEmptyLink( Eval("ClassingFASpec"))%>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td id="tb1td">類別說明：</td>
+                                            <td>類別說明：</td>
                                             <td><%#Eval("ClassDescript") %></td>
                                         </tr>
                                     </table>
@@ -66,48 +167,6 @@
                         </div>
                     </div>
                 </ItemTemplate>
-
-            </asp:Repeater>--%>
-            <asp:Repeater ID="rptResult" runat="server">
-               
-                <ItemTemplate>
-                     <div class="panel-group" id="SearchFAlistID">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#SearchFAlistID" href="#<%#Eval("id_num") %>">
-                                        <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> 】
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="<%#Eval("id_num") %>" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <table class="table1">
-                                        <tr>
-                                            <td id="tb1td">範圍和劑量：</td>
-                                            <td><%#Eval("UsageRangeDosageLimit") %></td>
-                                        </tr>
-                                        <tr>
-                                            <td id="tb1td">使用限制：</td>
-                                            <td><%#Eval("UsageLimit") %></td>
-                                        </tr>
-                                        <tr>
-                                            <td id="tb1td">規格：</td>
-                                            <td>
-                                                <%# checkEmptyLink( Eval("ClassingFASpec"))%>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td id="tb1td">類別說明：</td>
-                                            <td><%#Eval("ClassDescript") %></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ItemTemplate>
-                
             </asp:Repeater>
             <div style="overflow: hidden;">
                 <asp:Repeater ID="rptPaging" runat="server" OnItemCommand="rptPaging_ItemCommand">
@@ -120,20 +179,9 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
-
-
-
         </div>
-        <%--</div>--%>
     </form>
     <script>
-        <%--$('#ClassingFASpeclink').click(function () {
-            if ($('<%#Eval("ClassingFASpec") %>') == null) {
-                $('#filelink').hide();
-            }
-            else {
-                $('#filelink').addClass();
-            }
-        });--%>
+     
     </script>
 </asp:Content>

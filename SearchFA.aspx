@@ -2,9 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
-        #tb1td {
-            width: 100px;
-        }
+        
         #searchlist {
             height: 85%;
             
@@ -43,15 +41,15 @@
                                 <div class="panel-body">
                                     <table class="table1">
                                         <tr>
-                                            <td id="tb1td">範圍和劑量：</td>
+                                            <td>範圍和劑量：</td>
                                             <td><%#Eval("UsageRangeDosageLimit") %></td>
                                         </tr>
                                         <tr>
-                                            <td id="tb1td">使用限制：</td>
+                                            <td>使用限制：</td>
                                             <td><%#Eval("UsageLimit") %></td>
                                         </tr>
                                         <tr>
-                                            <td id="tb1td">規格：</td>
+                                            <td>規格：</td>
                                             <td>
                                                 <%--<button id="filelink" href="<%#Eval("ClassingFASpec") %>" class="btn-link">檔案下載</button>--%>
                                                 <%# checkEmptyLink( Eval("ClassingFASpec"))%> 
@@ -59,7 +57,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td id="tb1td">類別說明：</td>
+                                            <td>類別說明：</td>
                                             <td><%#Eval("ClassDescript") %></td>
                                         </tr>
                                     </table>
