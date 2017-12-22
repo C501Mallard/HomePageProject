@@ -62,10 +62,10 @@
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:QuizBankConnectionString %>"
                 SelectCommand="SELECT TOP 10 * FROM [QuizBank] ORDER BY NEWID()"></asp:SqlDataSource>
             <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:QuizBankConnectionString %>"
-                SelectCommand="SELECT * FROM [QuizBank] where Quiz_ID=@Quiz_ID,Qz_Title=@Qz_Title">
+                SelectCommand="SELECT * FROM [QuizBank] where Quiz_ID=@Quiz_ID,Qz_Content=@Qz_Content">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="Dt2" Name="Quiz_ID" Type="Int64" />
-                    <asp:ControlParameter ControlID="Dt2" Name="Qz_Title" Type="String" />
+                    <asp:ControlParameter ControlID="Dt2" Name="Qz_Content" Type="String" />
                 </SelectParameters>
             </asp:SqlDataSource>--%>
 
@@ -81,7 +81,7 @@
                                 <tr>
                                     <td></td>
                                     <td class="panel-body">
-                                        <asp:Label ID="Qz_TitleLabel" runat="server" Text='<%# Eval("Qz_Title") %>' />
+                                        <asp:Label ID="Qz_ContentLabel" runat="server" Text='<%# Eval("Qz_Content") %>' />
                                     </td>
                                 </tr>
                                 <tr>
@@ -124,8 +124,8 @@
                                     <br />
                                     <asp:Button ID="Qz_Item4_Button" runat="server" Text='<%# Eval("Qz_Item4") %>'></asp:Button>--%>
 
-                            <%--Qz_Title:
-                                    <asp:Label ID="Qz_TitleLabel" runat="server" Text='<%# Bind("Qz_Title") %>' />
+                            <%--Qz_Content:
+                                    <asp:Label ID="Qz_ContentLabel" runat="server" Text='<%# Bind("Qz_Content") %>' />
                                     <br />
                                     Qz_Item1:
                                     <asp:Label ID="Qz_Item1Label" runat="server" Text='<%# Bind("Qz_Item1") %>' />
@@ -196,7 +196,7 @@
                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CssClass="table table-bordered table-hover table-striped" PagerStyle-HorizontalAlign="Center" DataKeyNames="Quiz_ID" AllowPaging="true" PageSize="1">
                                 <Columns>--%>
                     <%--<asp:BoundField DataField="Quiz_ID" HeaderText="NO" SortExpression="Quiz_ID" />--%>
-                    <%--<asp:BoundField DataField="Qz_Title" HeaderText="題目" SortExpression="Qz_Title" />
+                    <%--<asp:BoundField DataField="Qz_Content" HeaderText="題目" SortExpression="Qz_Content" />
                                 </Columns>
                             </asp:GridView>
                         </div>--%>
@@ -227,7 +227,7 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                <asp:Label ID="Qz_TitleLabel" runat="server" Text='<%# Bind("Qz_Title") %>' />
+                                                <asp:Label ID="Qz_ContentLabel" runat="server" Text='<%# Bind("Qz_Content") %>' />
                                             </td>
                                         </tr>
                                         <tr>
@@ -256,8 +256,8 @@
                                     <br />
                                     <asp:Button ID="Qz_Item4_Button" runat="server" Text='<%# Eval("Qz_Item4") %>'></asp:Button>--%>
 
-                    <%--Qz_Title:
-                                    <asp:Label ID="Qz_TitleLabel" runat="server" Text='<%# Bind("Qz_Title") %>' />
+                    <%--Qz_Content:
+                                    <asp:Label ID="Qz_ContentLabel" runat="server" Text='<%# Bind("Qz_Content") %>' />
                                     <br />
                                     Qz_Item1:
                                     <asp:Label ID="Qz_Item1Label" runat="server" Text='<%# Bind("Qz_Item1") %>' />

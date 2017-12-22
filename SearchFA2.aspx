@@ -120,8 +120,8 @@
                                     <tr>
                                         <td>
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#SearchFAlistID" href="#<%#Eval("id_num") %>">
-                                                    <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> 】
+                                                <a data-toggle="collapse" data-parent="#SearchFAlistID" href="#<%#Eval("Class_ID") %>">
+                                                    <%#Eval("ChtName") %>  ，【 <%#Eval("EngName") %> 】
                                                 </a>
                                             </h4>
                                         </td>
@@ -140,7 +140,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div id="<%#Eval("id_num") %>" class="panel-collapse collapse">
+                            <div id="<%#Eval("Class_ID") %>" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <table class="table1">
                                         <tr>
