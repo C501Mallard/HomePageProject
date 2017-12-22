@@ -32,8 +32,8 @@ public partial class SearchFA2 : System.Web.UI.Page
     protected void BindRepeater()
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString.ToString());
-        SqlCommand cmd = new SqlCommand("SELECT * FROM FA61 where ClassName=@ClassName", con);
-    
+        SqlCommand cmd = new SqlCommand("SELECT * FROM ClassingFA where exists (SELECT ClassName FROM FA_Class where ClassName=@ClassName and FA_Class.Class_ID=ClassingFA.Class_ID)", con);
+
         cmd.Parameters.AddWithValue("ClassName", DropDownList1.Text);
 
         if (con.State == ConnectionState.Closed)
