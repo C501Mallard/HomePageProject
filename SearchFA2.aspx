@@ -3,6 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
        
+        
+
         #searchlist {
             height: 85%;
         }
@@ -100,15 +102,9 @@
     </div>
     <form id="form1" runat="server">
         <div>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="SELECT distinct ClassName FROM FA61"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>" SelectCommand="SELECT ClassName FROM FA_Class"></asp:SqlDataSource>
             <asp:DropDownList ID="DropDownList1" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSource2" DataTextField="ClassName" AutoPostBack="true">
             </asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>"
-                SelectCommand="SELECT * FROM FA61 where ClassName=@ClassName">
-                <SelectParameters>
-                    <asp:ControlParameter ControlID="DropDownList1" PropertyName="SelectedValue" Name="ClassName" Type="String" />
-                </SelectParameters>
-            </asp:SqlDataSource>
             <hr />
             <asp:Repeater ID="rptResult" runat="server">
 
@@ -120,8 +116,8 @@
                                     <tr>
                                         <td>
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#SearchFAlistID" href="#<%#Eval("id_num") %>">
-                                                    <%#Eval("ChName") %>  ，【 <%#Eval("EngName") %> 】
+                                                <a data-toggle="collapse" data-parent="#SearchFAlistID" href="#<%#Eval("ClassingFA_ID") %>">
+                                                    <%#Eval("ChtName") %>  ，【 <%#Eval("EngName") %> 】
                                                 </a>
                                             </h4>
                                         </td>
@@ -140,26 +136,22 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div id="<%#Eval("id_num") %>" class="panel-collapse collapse">
+                            <div id="<%#Eval("ClassingFA_ID") %>" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <table class="table1">
                                         <tr>
-                                            <td>範圍和劑量：</td>
+                                            <td style="width:90px">範圍和劑量：</td>
                                             <td><%#Eval("UsageRangeDosageLimit") %></td>
                                         </tr>
                                         <tr>
-                                            <td>使用限制：</td>
+                                            <td style="width:90px">使用限制：</td>
                                             <td><%#Eval("UsageLimit") %></td>
                                         </tr>
                                         <tr>
-                                            <td>規格：</td>
+                                            <td style="width:90px">規格：</td>
                                             <td>
                                                 <%# checkEmptyLink( Eval("ClassingFASpec"))%>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>類別說明：</td>
-                                            <td><%#Eval("ClassDescript") %></td>
                                         </tr>
                                     </table>
                                 </div>
